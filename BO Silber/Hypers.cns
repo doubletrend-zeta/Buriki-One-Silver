@@ -1,0 +1,555 @@
+;---------------------------------------------------------------------------
+;Impale
+[Statedef 2999]
+type = S
+movetype = A
+physics = N
+anim = 2999
+
+[State 2999 aniation]
+type = ChangeAnim
+trigger1 = time = 1
+value = 2999
+ctrl = 0
+
+[state 2999]
+type = ctrlset
+trigger1 = 1
+value = 0
+
+[state 2999 superfx]
+type = explod
+triggerall = numexplod(10004) = 0
+trigger1 = time = 1
+anim = 10004
+ID = 10004
+pos = -4,-50
+supermovetime = 41
+scale = 0.5,0.5
+ontop = 1
+ownpal = 1
+
+[state 2999 playsnd]
+type = playsnd
+trigger1 = time = 1
+value = 3000,0
+
+[State 2999 superpause]
+type = SuperPause
+time = 65
+anim = -1
+trigger1 = time = 1
+p2defmul = 1
+sound = S2100,0
+poweradd = -2000
+
+[State 2999]
+type = Explod
+trigger1 = time = 2
+anim = 10003
+pos = -35,-15
+scale = 0.5,0.5
+
+[State 3050]
+type = PlaySnd
+trigger1 = time = 2
+value = S40, 2
+
+[State 2999]
+type = VelSet
+trigger1 = animelem = 2
+x = 10
+y = -15
+
+[State 2999]
+type = VelSet
+trigger1 = animelem = 4
+x = 0
+y = 0
+
+[State 2999]
+type = PosSet
+trigger1 = animtime = 4
+x = 15
+y = -15
+
+[State 2999]
+type = PosSet
+trigger1 = animtime = 5
+x = 25
+y = -20
+
+[State 2999]
+type = PosSet
+trigger1 = animtime = 6
+x = 35
+y = -30
+
+[State 2999]
+type = PosSet
+trigger1 = animtime = 7
+x = 45
+y = -40
+
+[State 2999]
+type = PosSet
+trigger1 = animtime = 8
+x = 55
+y = -50
+
+[State 2999]
+type = PosSet
+trigger1 = animtime = 9
+x = 65
+y = -60
+
+[State 2999]
+type = PosFreeze
+trigger1 = animelem = 4
+value = 1
+
+[State 2999]
+type = ChangeState
+trigger1 = animtime = 0
+value = 3000
+ctrl = 0
+
+;---------------------------------------------------------------------------
+[Statedef 3000]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+anim = 3000
+ctrl = 0
+sprpriority = 2
+
+[State 3000]
+type = Velset
+trigger1 = animelem = 1
+x = 30
+y = 7
+
+[state 3000]
+type = ctrlset
+trigger1 = 1
+value = 0
+
+[State 3000 Hit]
+type = HitDef
+trigger1 = Time = 0
+attr = S, HA
+animtype  = Hard
+damage    = 300
+getpower  = 0
+priority  = 6
+guardflag = MA
+pausetime = 15,15
+sparkno = s10005+(random%3)
+sparkxy = -50,-50
+hitsound   = S1100,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 0
+ground.velocity = 0
+air.velocity = -3,-2.8
+air.fall = 1
+fall.animtype = Hard
+fall.recover = 0
+fall = 1
+envshake.time = 30
+envshake.freq = 100
+envshake.phase = 1
+
+[State 3001]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 52
+
+[State 3000]
+type = ChangeState
+trigger1 = movehit
+value = 3001
+ctrl = 0
+
+;---------------------------------------------------------------------------
+[Statedef 3001]
+type    = A
+movetype= A
+physics = N
+anim = 3001
+
+[state 3001]
+type = ctrlset
+trigger1 = 1
+value = 0
+
+[State 3001]
+type = VelSet
+trigger1 = time = 1
+y = -3
+
+[State 3001]
+type = VelSet
+trigger1 = time = 1
+x = -2
+
+[State 3001]
+type = VelSet
+trigger1 = time = 3
+y = -5
+
+[State 3001]
+type = VelSet
+trigger1 = time = 3
+x = -2.5
+
+[State 3001]
+type = VelSet
+trigger1 = time = 5
+y = -1
+
+[State 3001]
+type = VelSet
+trigger1 = time = 5
+x = -3
+
+[State 3001]
+type = VelSet
+trigger1 = time = 7
+y = 2
+
+[State 3001]
+type = VelSet
+trigger1 = time = 7
+x = -3.5
+
+[State 3001]
+type = Velset
+trigger1 = time = 10
+x = -4
+y = 4
+
+[State 3001]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 52
+
+;---------------------------------------------------------------------------
+;Brazilian Kick
+[Statedef 3019]
+type = S
+movetype = I
+physics = S
+anim = 1020
+ctrl = 0
+
+[State 3019]
+type = ReversalDef
+trigger1 = Animelem = 4
+reversal.attr = SC,NA,SA,HA
+pausetime = 0,15
+p1stateno = 3020
+P2stateno = 1022
+
+[state 3019]
+type = ctrlset
+trigger1 = 1
+value = 0
+
+[State 3019]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;--------------------------
+[Statedef 3020]
+type = S
+movetype = A
+physics = S
+anim = 3020
+
+[state 3020]
+type = ctrlset
+trigger1 = 1
+value = 0
+
+[state 3020 superfx]
+type = explod
+triggerall = numexplod(10004) = 0
+trigger1 = time = 1
+anim = 10004
+ID = 10004
+pos = -18,-50
+supermovetime = 41
+scale = 0.5,0.5
+ontop = 1
+ownpal = 1
+
+[state 3020 playsnd]
+type = playsnd
+trigger1 = time = 1
+value = 3000,0
+
+[State 3020 superpause]
+type = SuperPause
+time = 65
+anim = -1
+trigger1 = time = 1
+p2defmul = 1
+sound = S2100,0
+
+[State 3020 drain power]
+type = PowerAdd
+trigger1 = time = 1
+value = -1000
+
+[State 3020 First Hit]
+type = HitDef
+trigger1 = Animelem = 4
+attr = S, HA
+animtype  = Low
+damage    = 15
+getpower  = 0
+priority  = 2
+pausetime = 15,80
+sparkno = s10005+(random%3)
+sparkxy = -5,-40
+hitsound   = S400,0
+guardsound = 6,0
+ground.type = Low
+ground.slidetime = 0
+ground.hittime  = 0
+ground.velocity = 0
+
+[State 3020 Second Hit]
+type = HitDef
+trigger1 = Animelem = 8
+attr = S, HA
+animtype  = Hard
+damage    = 85
+getpower  = 0
+priority  = 2
+pausetime = 0,30
+sparkno = s10005+(random%3)
+sparkxy = -45,-80
+hitsound   = S2100,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 0
+ground.velocity = -5, -6
+air.velocity = -7, -8
+p2stateno = 3021
+fall.damage = 200
+fall.envshake.time = 30
+fall.envshake.freq = 100
+fall.envshake.phase = 1
+
+[State 3019]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;-------------------------
+[Statedef 3021]
+type = A
+movetype = H
+physics = N
+
+[state 3021]
+type = ctrlset
+trigger1 = 1
+value = 0
+
+[State 3021]
+type = ChangeAnim2
+trigger1 = 1
+value = 3021
+
+[State 3021, 1]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 3021, Hit ground]
+type = Changestate
+trigger1 = time = 10
+value = 3022
+
+;--------------------------
+[Statedef 3022]
+type = S
+movetype = H
+physics = N
+
+[State 3022]
+type = ChangeAnim2
+trigger1 = 1
+value = 3022
+
+[State 3022, Gravity]
+type = VelAdd
+trigger1 = 1
+y = .35
+
+[State 3022, Hit ground]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 5100
+
+;----------------------------------------------------------------------------
+;Flying Axe Kick
+[Statedef 3050]
+type    = A
+movetype= A
+physics = N
+velset = 0,0
+anim = 3050
+ctrl = 0
+sprpriority = 2
+
+[state 3050 superfx]
+type = explod
+triggerall = numexplod(10004) = 0
+trigger1 = time = 1
+anim = 10004
+ID = 10004
+pos = -4,-50
+supermovetime = 41
+scale = 0.5,0.5
+ontop = 1
+ownpal = 1
+
+[state 3050 playsnd]
+type = playsnd
+trigger1 = time = 1
+value = 3000,0
+
+[State 3050 superpause]
+type = SuperPause
+time = 65
+anim = -1
+trigger1 = time = 1
+p2defmul = 1
+sound = S2100,0
+
+[State 3050 drain power]
+type = PowerAdd
+trigger1 = time = 1
+value = -2000
+
+[State 3050]
+type = Explod
+trigger1 = time = 2
+anim = 10003
+pos = -35,-15
+scale = 0.5,0.5
+
+[State 3050]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = S40, 2
+
+[State 3050 Screen lock to keep high jump stages from being assholes for 1 sec]
+type = ScreenBound
+trigger1 = 1
+value = 0
+
+[State 3050]
+type = Velset
+trigger1 = Animelem = 2
+y = -10
+
+[state 3050]
+type = ctrlset
+trigger1 = 1
+value = 0
+
+[State 3050]
+type = ChangeState
+trigger1 = Animtime = 0
+value = 3051
+
+;---------------------
+[Statedef 3051]
+type    = A
+movetype= A
+physics = A
+velset = 0,0
+anim = 3051
+ctrl = 0
+sprpriority = 2
+
+[State 3051, Gravity]
+type = VelAdd
+trigger1 = 1
+y = .85
+
+[State 3051 Fall on person]
+type = PosAdd
+trigger1 = 1
+x = 10
+
+[State 3052, 2]
+type = HitDef
+trigger1 = Animelem = 5
+attr = S, HA
+animtype  = Up
+damage    = 334
+getpower  = 0
+priority  = 5
+pausetime = 30,30
+sparkno = s10005+(random%3)
+sparkxy = 0,-110
+hitsound   = S1100,1
+guardsound = 6,0
+ground.type = Low
+ground.slidetime = 26
+ground.hittime  = 26
+ground.velocity = -1.3,-15
+air.velocity = -1.3,-15
+envshake.time = 30
+envshake.ampl = 78
+envshake.freq = 100
+p2facing = 1
+fall = 1
+fall.recover = 0
+fall.damage = 70
+fall.envshake.ampl = 6
+fall.envshake.freq = 178
+fall.envshake.time = 15
+
+[state 3051]
+type = ctrlset
+trigger1 = 1
+value = 0
+
+[State 3051, Hit ground]
+type = ChangeState
+trigger1 = Movehit
+value = 3052
+
+;---------------------
+[Statedef 3052]
+type    = A
+movetype= A
+physics = A
+anim = 3052
+ctrl = 0
+
+[state 3052]
+type = ctrlset
+trigger1 = 1
+value = 0
+
+[State 3050, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1

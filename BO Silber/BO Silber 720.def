@@ -1,0 +1,34 @@
+[Info]
+name ="Buriki One Silber"
+displayname ="Silber"
+versiondate =01,01,2012
+mugenversion =1.0
+author ="Bannana"
+pal.defaults =1
+localcoord = 320,240
+[Files]
+sprite =Silber.sff
+anim =Silber.air
+sound =Silber.snd
+cmd =Silber.cmd
+cns =Basics.cns
+stcommon =common1.cns
+st = Basics.cns
+st2 = Throwing States.cns
+st3 = Specials.cns
+st4 = Hypers.cns
+st5 = Grappling States.cns
+st6 = Balance Gauge 720M.cns
+st7 = Misc.cns
+pal1=FSilber.act
+pal2=Seo.act
+pal3=First Day of Karate.act
+pal4=Buriki One Gi.act
+pal5=
+pal6=
+pal7=
+pal8=
+
+[Arcade]
+intro.storyboard =
+ending.storyboard =

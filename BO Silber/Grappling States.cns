@@ -1,0 +1,122 @@
+;===========================================================================
+;Grappling states
+;---------------------------------------------------------------------------
+;Grapple - Balance Gague test
+[Statedef 6000]
+type    = S
+movetype= A
+physics = N
+anim = 6000
+
+[State 6000, Bind]
+type = TargetBind
+trigger1 = AnimElemTime(2) < 0
+pos = 28, 0
+
+[State 6000]
+type = changestate
+trigger1 = var(47) <= 60
+value = 6102
+
+[State 6000]
+type = changestate
+trigger1 = p2stateno = 6101
+value = 6103
+
+;---------------------------------------------------------------------------
+;Grapple Attack 1
+[Statedef 6001]
+type = S
+movetype = A
+physics = N
+anim = 6001
+
+[State 6001 Hit Sound]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = S440, 0
+
+[state 6001 spark]
+type = explod
+Triggerall = enemy,alive = 1
+triggerall = numexplod(10005) = 0
+trigger1 = time = 11
+anim = 10005+(random%3)
+pos = 50,-70
+ID = 10005
+ownpal = 1
+ontop = 1
+
+[state 6001 hit]
+type = targetlifeAdd
+trigger1 = animelem = 3
+value = -35
+
+[state 6001 p2 hit anim]
+type = targetstate
+trigger1 = time = 11
+value = 6051
+
+[state 6001 return]
+type = changeState
+trigger1 = animtime = 0
+value = 6000
+
+;---------------------------------------------------------------------------
+;Held by grapple
+[Statedef 6050]
+type    = S
+movetype= H
+physics = N
+velset = 0,0
+anim = 6050
+
+[State 6050 grapple break varset]
+type = varset
+trigger1 = (!time)
+var(20) = 10
+
+[state 6050 varadd]
+type = varadd
+trigger1 = (command = "grapplebreakfwd") || (command = "grapplebreakback") || (command = "grapplebreakfwd2") || (command = "grapplebreakback2")
+var(20) = -1
+
+[State 6050, 1]
+type = ChangeAnim2
+Trigger1 = Time = 0
+value = 6050
+
+[State 6050]
+type = changeState
+trigger1 = var(20) = 0
+value = 6101
+
+[State 6050]
+type = changeState
+trigger1 = var(47) <= 60
+value = 6101
+
+[State 6050 death]
+type = changestate
+trigger1 = alive = 0
+value = 6101
+
+[State 6050 Dont get stuck buddy]
+type = SelfState
+trigger1 = p2movetype != A
+value = 6101
+
+;---------------------------------------------------------------------------
+;Hit in Grapple
+[Statedef 6051]
+type = S
+movetype = H
+physics = N
+velset = 0,0
+anim = 6051
+
+[state 6051]
+type = changestate
+trigger1 = animtime = 0
+value = 6050
+
